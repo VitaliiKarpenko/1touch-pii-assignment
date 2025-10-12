@@ -1,0 +1,53 @@
+
+<div class="header">
+  <mat-label>Filter by:</mat-label>
+  
+  <div
+    matTooltip="Clear all filters"
+    matTooltipPosition="left"
+    class="clear-all-tooltip-keeper"
+  >
+    <button
+      matIconButton
+      aria-label="Clear types"
+      (click)="form.reset()"
+      [disabled]="!name.value && !pii.value?.length"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput type="text" formControlName="name">
+    @if (name.value) {
+      <button matSuffix matIconButton aria-label="Clear name" (click)="name.reset()">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>PII Types</mat-label>
+    <mat-select formControlName="pii" multiple>
+      <mat-select-trigger>
+        {{pii.value?.[0] || ''}}
+        @if ((pii.value?.length || 0) > 1) {
+          <span>
+            (+{{(pii.value?.length || 0) - 1}} {{pii.value?.length === 2 ? 'other' : 'others'}})
+          </span>
+        }
+      </mat-select-trigger>
+      @for (type of (personService.persons$ | async)! | allPiiTypes; track type) {
+        <mat-option [value]="type">{{ type }}</mat-option>
+      }
+    </mat-select>
+    @if (pii.value) {
+      <button matSuffix matIconButton aria-label="Clear types" (click)="$event.stopPropagation(); pii.reset()">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </mat-form-field>
+</form>

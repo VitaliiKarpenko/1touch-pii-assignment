@@ -1,0 +1,22 @@
+:host {
+  display: inline-block;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  mat-label {
+    line-height: 24px;
+    font-size: 20px;
+  }
+}
+
+mat-form-field {
+  width: 250px;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
