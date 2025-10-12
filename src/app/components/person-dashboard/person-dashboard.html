@@ -6,12 +6,12 @@
 
   <ng-container matColumnDef="piiTypes">
     <th mat-header-cell *matHeaderCellDef>PII Types</th>
-    <td mat-cell *matCellDef="let person">{{ person.pii }}</td>
+    <td mat-cell *matCellDef="let person">{{ person.pii | piiTypes }}</td>
   </ng-container>
 
   <ng-container matColumnDef="dataSources">
     <th mat-header-cell *matHeaderCellDef>Data Sources Count</th>
-    <td mat-cell *matCellDef="let person">{{ person.dataSources }}</td>
+    <td mat-cell *matCellDef="let person">{{ person.dataSources | dataSourceCount }}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
