@@ -1,4 +1,4 @@
-<mat-form-field class="example-form-field">
+<mat-form-field>
   <mat-label>Search by name</mat-label>
   <input matInput type="text" [formControl]="nameCtrl">
   @if (nameCtrl.value) {
@@ -8,7 +8,29 @@
   }
 </mat-form-field>
 
-<table mat-table [dataSource]="(persons$ | async)! | nameFilter:(nameSearch$ | async)" class="mat-elevation-z8">
+<mat-form-field>
+  <mat-label>PII Types</mat-label>
+  <mat-select [formControl]="piiTypesCtrl" multiple>
+    <mat-select-trigger>
+      {{piiTypesCtrl.value?.[0] || ''}}
+      @if ((piiTypesCtrl.value?.length || 0) > 1) {
+        <span>
+          (+{{(piiTypesCtrl.value?.length || 0) - 1}} {{piiTypesCtrl.value?.length === 2 ? 'other' : 'others'}})
+        </span>
+      }
+    </mat-select-trigger>
+    @for (type of (persons$ | async)! | allPiiTypes; track type) {
+      <mat-option [value]="type">{{ type }}</mat-option>
+    }
+  </mat-select>
+  @if (piiTypesCtrl.value) {
+    <button matSuffix matIconButton aria-label="Clear" (click)="$event.stopPropagation(); piiTypesCtrl.reset()">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+</mat-form-field>
+
+<table mat-table [dataSource]="(persons$ | async)! | personFilter:(filter$ | async)!">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>
     <td mat-cell *matCellDef="let person">{{ person.name }}</td>
