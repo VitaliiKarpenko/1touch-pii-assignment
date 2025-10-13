@@ -6,6 +6,7 @@ import { PiiTypesPipe } from '../../pipes/pii-types/pii-types.pipe';
 import { DataSourceCountPipe } from '../../pipes/data-source-count/data-source-count.pipe';
 import { PersonFilterPipe } from '../../pipes/person-filter/person-filter.pipe';
 import { SearchPersonForm } from './search-person-form/search-person-form';
+import { PropertyList } from '../../shared/property-list/property-list';
 
 @Component({
   selector: 'app-person-dashboard',
@@ -14,6 +15,7 @@ import { SearchPersonForm } from './search-person-form/search-person-form';
   providers: [PersonService],
   imports: [
     SearchPersonForm,
+    PropertyList,
     AsyncPipe,
     PiiTypesPipe,
     DataSourceCountPipe,

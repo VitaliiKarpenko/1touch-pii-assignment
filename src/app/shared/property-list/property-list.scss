@@ -1,0 +1,13 @@
+:host {
+  display: inline-block;
+}
+
+.list-container {
+  display: grid;
+  grid-template-columns: max-content max-content;
+}
+
+.property-list-label {
+  margin-right: 10px;
+  font-weight: 500;
+}

@@ -11,3 +11,9 @@ export type PersonDataSources = {
   emails: string[];
   chats: string[];
 };
+
+export type PersonStatistic = {
+  totalPersons: number;
+  totalPiiItems: number;
+  averageDataSources: number;
+};
