@@ -1,8 +1,11 @@
-@if (properties) {
-  <div class="list-container">
-    @for (prop of !isSorting ? displayedProperties : displayedProperties.sort(compareFn); track prop.property) {
-      <div class="property-list-label">{{ prop.label }}:</div>
-      <div class="property-list-value">{{ properties[prop.property] }}</div>
-    }
-  </div>
-}
+<div class="list-container">
+  @for (prop of properties | normalizeProps:displayedProperties:isSorting:compareFn; track $index) {
+    <div class="property-list-label">{{ prop.label }}:</div>
+
+    <div class="property-list-value">
+      @for (value of prop.value; track $index) {
+        <div class="property-list-value-item">{{ value }}</div>
+      }
+    </div>
+  }
+</div>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { Person, PersonDataSources, PersonStatistic } from '../../models/person.model';
 
 @Injectable()
@@ -9,13 +9,20 @@ export class PersonService {
   public persons$ = this._persons$.asObservable();
   public statistics: PersonStatistic;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllPersons(): Observable<Person[]> {
     return this.http.get<Person[]>('/assets/piis.json')
       .pipe(
         tap(persons => this._persons$.next(persons)),
         tap(this.setStatistics.bind(this)),
+      );
+  }
+
+  getPersonById(id: number): Observable<Person | undefined> {
+    return this.persons$
+      .pipe(
+        map((persons) => persons.find((person) => person.id === id)),
       );
   }
 

@@ -1,35 +1,38 @@
-<app-search-person-form #searchForm></app-search-person-form>
+<router-outlet></router-outlet>
 
-<app-property-list
-  [properties]="personService.statistics"
-  [displayedProperties]="[
-    { property: 'totalPersons', label: 'Total persons' },
-    { property: 'totalPiiItems', label: 'Total PII items' },
-    { property: 'averageDataSources', label: 'Average data sources' },    
-  ]"
-  [isSorting]="false"
-></app-property-list>
+@if (!route.children.length) {
+  <app-search-person-form #searchForm></app-search-person-form>
 
-<table
-  mat-table
-  [dataSource]="(personService.persons$| async)! | personFilter:searchForm.filterSignal()!"
->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let person">{{ person.name }}</td>
-  </ng-container>
+  <app-property-list
+    [properties]="personService.statistics"
+    [displayedProperties]="[
+      { property: 'totalPersons', label: 'Total persons' },
+      { property: 'totalPiiItems', label: 'Total PII items' },
+      { property: 'averageDataSources', label: 'Average data sources' },    
+    ]"
+    [isSorting]="false"
+  ></app-property-list>
 
-  <ng-container matColumnDef="piiTypes">
-    <th mat-header-cell *matHeaderCellDef>PII Types</th>
-    <td mat-cell *matCellDef="let person">{{ person.pii | piiTypes }}</td>
-  </ng-container>
+  <table
+    mat-table
+    [dataSource]="(personService.persons$| async)! | personFilter:searchForm.filterSignal()!"
+  >
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="dataSources">
-    <th mat-header-cell *matHeaderCellDef>Data Source Count</th>
-    <td mat-cell *matCellDef="let person">{{ person.dataSources | dataSourceCount }}</td>
-  </ng-container>
+    <ng-container matColumnDef="piiTypes">
+      <th mat-header-cell *matHeaderCellDef>PII Types</th>
+      <td mat-cell *matCellDef="let person">{{ person.pii | piiTypes }}</td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <ng-container matColumnDef="dataSources">
+      <th mat-header-cell *matHeaderCellDef>Data Source Count</th>
+      <td mat-cell *matCellDef="let person">{{ person.dataSources | dataSourceCount }}</td>
+    </ng-container>
 
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="goToDetail(row.id)"></tr>
+  </table>
+}

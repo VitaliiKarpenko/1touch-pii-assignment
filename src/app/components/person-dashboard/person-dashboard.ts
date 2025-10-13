@@ -7,6 +7,7 @@ import { DataSourceCountPipe } from '../../pipes/data-source-count/data-source-c
 import { PersonFilterPipe } from '../../pipes/person-filter/person-filter.pipe';
 import { SearchPersonForm } from './search-person-form/search-person-form';
 import { PropertyList } from '../../shared/property-list/property-list';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-person-dashboard',
@@ -21,16 +22,25 @@ import { PropertyList } from '../../shared/property-list/property-list';
     DataSourceCountPipe,
     PersonFilterPipe,
     MatTableModule,
+    RouterOutlet,
   ],
 })
 export class PersonDashboard implements OnInit {
   displayedColumns = ['name', 'piiTypes', 'dataSources'];
   piiTypesOpts: string[] = [];
 
-  constructor(public personService: PersonService) {}
+  constructor(
+    public route: ActivatedRoute,
+    public personService: PersonService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.getPersons();
+  }
+
+  goToDetail(id: number) {
+    this.router.navigate([id], { relativeTo: this.route });
   }
 
   private getPersons() {
