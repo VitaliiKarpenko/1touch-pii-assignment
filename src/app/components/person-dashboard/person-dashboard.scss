@@ -1,3 +1,5 @@
+@use '../../../styles/mat-card' as mat-card;
+
 .page-container {
   display: flex;
   flex-direction: column;
@@ -7,7 +9,7 @@
   display: block;
   flex: 1;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: mat-card.$card-margin;
 
   mat-card-content {
     height: 100%;
@@ -32,11 +34,33 @@
 
   > mat-card {
     flex-grow: 1;
-    margin: 10px 0;
+    margin: mat-card.$card-margin 0;
 
     &:not(:last-child) {
-      margin-right: 10px;
+      margin-right: mat-card.$card-margin;
     }
+  }
+}
+
+.mat-mdc-form-field-bottom-align {
+  display: none;
+}
+
+@media (max-width: 959px) {
+  .top-container-content {
+    flex-direction: column;
+
+    > mat-card.mat-mdc-card {
+      margin: 0 0 mat-card.$mobile-card-margin 0;
+    }
+  }
+    
+  .list-card  {
+    margin-bottom: mat-card.$mobile-card-margin;
+  }
+
+  .mdc-data-table__cell, .mdc-data-table__header-cell {
+    padding: 0 5px;
   }
 }
 

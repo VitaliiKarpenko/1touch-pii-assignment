@@ -30,4 +30,10 @@ body {
   height: 100vh;
   width: 80%;
   margin: 0 auto;
+  
+  @media (max-width: 959px) {
+    $mobile-page-marging: 5px;
+    width: calc(100% - ($mobile-page-marging * 2));
+    margin: 0 $mobile-page-marging;
+  }
 }
