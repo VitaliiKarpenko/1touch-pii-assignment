@@ -4,6 +4,7 @@ import { PersonService } from '../../services/person/person.service';
 import { ActivatedRoute } from '@angular/router';
 import { Person } from '../../models/person.model';
 import { filter, take } from 'rxjs';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-person-detail',
@@ -11,6 +12,7 @@ import { filter, take } from 'rxjs';
   styleUrls: ['./person-detail.scss'],
   imports: [
     PropertyList,
+    MatCardModule,
   ]
 })
 export class PersonDetail implements OnInit {

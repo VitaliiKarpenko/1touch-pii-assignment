@@ -1,3 +1,45 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-card {
+  display: block;
+  flex: 1;
+  overflow: hidden;
+  margin-bottom: 10px;
+
+  mat-card-content {
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+}
+
+.table-container {
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.top-container {
+  display: block;
+}
+
+.top-container-content {
+  display: flex;
+  flex-wrap: wrap;
+
+  > mat-card {
+    flex-grow: 1;
+    margin: 10px 0;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+
 tr {
   cursor: pointer;
 }

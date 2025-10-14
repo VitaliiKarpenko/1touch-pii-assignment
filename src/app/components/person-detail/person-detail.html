@@ -1,30 +1,50 @@
-@if (!person) {
-  <div class="fetching-msg">Person detail is fetching...</div>
-} @else {
-  <div class="person-name">{{ person.name }}</div>
+<div class="page-container">
+  @if (!person) {
+    <div class="fetching-msg">Person detail is fetching...</div>
+  } @else {
+    <div class="person-name">{{ person.name }}</div>
 
-  <app-property-list
-    [properties]="person.pii"
-    [displayedProperties]="[
-      { property: 'address', label: 'Address' },
-      { property: 'credit_card', label: 'Credit card' },
-      { property: 'driver_license', label: 'Driver license' },
-      { property: 'email', label: 'Email' },
-      { property: 'employee_id', label: 'Employee ID' },
-      { property: 'passport_number', label: 'Passpor number' },
-      { property: 'phone_number', label: 'Phone number' },
-      { property: 'ssn', label: 'SSN' },
-    ]"
-  ></app-property-list>
+    <div class="card-container">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>PII items</mat-card-title>
+        </mat-card-header>
 
-  <app-property-list
-    [properties]="person.dataSources"
-    [displayedProperties]="[
-      { property: 'documents', label: 'Documents' },
-      { property: 'databases', label: 'Databases' },
-      { property: 'emails', label: 'Emails' },
-      { property: 'chats', label: 'Chats' },
-    ]"
-  ></app-property-list> 
-}
+        <mat-card-content>
+          <app-property-list
+            [properties]="person.pii"
+            [displayedProperties]="[
+              { property: 'address', label: 'Address' },
+              { property: 'credit_card', label: 'Credit card' },
+              { property: 'driver_license', label: 'Driver license' },
+              { property: 'email', label: 'Email' },
+              { property: 'employee_id', label: 'Employee ID' },
+              { property: 'passport_number', label: 'Passpor number' },
+              { property: 'phone_number', label: 'Phone number' },
+              { property: 'ssn', label: 'SSN' },
+            ]"
+          ></app-property-list>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Data sources</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <app-property-list
+            [properties]="person.dataSources"
+            [displayedProperties]="[
+              { property: 'documents', label: 'Documents' },
+              { property: 'databases', label: 'Databases' },
+              { property: 'emails', label: 'Emails' },
+              { property: 'chats', label: 'Chats' },
+            ]"
+          ></app-property-list> 
+        </mat-card-content>
+      </mat-card>
+    </div>
+  }
+</div>
   

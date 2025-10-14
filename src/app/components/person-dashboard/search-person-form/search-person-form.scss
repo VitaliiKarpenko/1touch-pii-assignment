@@ -6,10 +6,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
+  height: 28px;
+  font-weight: 400;
 
   mat-label {
-    line-height: 24px;
-    font-size: 20px;
+    line-height: 28px;
+    font-size: 22px;
   }
 }
 

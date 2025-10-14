@@ -8,6 +8,7 @@ import { PersonFilterPipe } from '../../pipes/person-filter/person-filter.pipe';
 import { SearchPersonForm } from './search-person-form/search-person-form';
 import { PropertyList } from '../../shared/property-list/property-list';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-person-dashboard',
@@ -22,6 +23,7 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
     DataSourceCountPipe,
     PersonFilterPipe,
     MatTableModule,
+    MatCardModule,
     RouterOutlet,
   ],
 })

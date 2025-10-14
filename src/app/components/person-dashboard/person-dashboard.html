@@ -1,38 +1,62 @@
 <router-outlet></router-outlet>
 
 @if (!route.children.length) {
-  <app-search-person-form #searchForm></app-search-person-form>
+  <div class="page-container">
+    <div class="top-container">
+      <div class="top-container-content">
+        <mat-card appearance="outlined">
+          <mat-card-content>
+            <app-search-person-form #searchForm></app-search-person-form>
+          </mat-card-content>
+        </mat-card>
 
-  <app-property-list
-    [properties]="personService.statistics"
-    [displayedProperties]="[
-      { property: 'totalPersons', label: 'Total persons' },
-      { property: 'totalPiiItems', label: 'Total PII items' },
-      { property: 'averageDataSources', label: 'Average data sources' },    
-    ]"
-    [isSorting]="false"
-  ></app-property-list>
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Statistics</mat-card-title>
+          </mat-card-header>
 
-  <table
-    mat-table
-    [dataSource]="(personService.persons$| async)! | personFilter:searchForm.filterSignal()!"
-  >
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let person">{{ person.name }}</td>
-    </ng-container>
+          <mat-card-content>
+            <app-property-list
+              [properties]="personService.statistics"
+              [displayedProperties]="[
+                { property: 'totalPersons', label: 'Total persons' },
+                { property: 'totalPiiItems', label: 'Total PII items' },
+                { property: 'averageDataSources', label: 'Average data sources' },    
+              ]"
+              [isSorting]="false"
+            ></app-property-list>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
 
-    <ng-container matColumnDef="piiTypes">
-      <th mat-header-cell *matHeaderCellDef>PII Types</th>
-      <td mat-cell *matCellDef="let person">{{ person.pii | piiTypes }}</td>
-    </ng-container>
+    <mat-card appearance="outlined" class="list-card">
+      <mat-card-content>
+        <div class="table-container">
+          <table
+            mat-table
+            [dataSource]="(personService.persons$| async)! | personFilter:searchForm.filterSignal()!"
+          >
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Name</th>
+              <td mat-cell *matCellDef="let person">{{ person.name }}</td>
+            </ng-container>
 
-    <ng-container matColumnDef="dataSources">
-      <th mat-header-cell *matHeaderCellDef>Data Source Count</th>
-      <td mat-cell *matCellDef="let person">{{ person.dataSources | dataSourceCount }}</td>
-    </ng-container>
+            <ng-container matColumnDef="piiTypes">
+              <th mat-header-cell *matHeaderCellDef>PII Types</th>
+              <td mat-cell *matCellDef="let person">{{ person.pii | piiTypes }}</td>
+            </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="goToDetail(row.id)"></tr>
-  </table>
+            <ng-container matColumnDef="dataSources">
+              <th mat-header-cell *matHeaderCellDef>Data Source Count</th>
+              <td mat-cell *matCellDef="let person">{{ person.dataSources | dataSourceCount }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="goToDetail(row.id)"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 }
