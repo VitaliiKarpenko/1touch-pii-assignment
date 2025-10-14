@@ -9,6 +9,9 @@ import { SearchPersonForm } from './search-person-form/search-person-form';
 import { PropertyList } from '../../shared/property-list/property-list';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-person-dashboard',
@@ -24,11 +27,14 @@ import { MatCardModule } from '@angular/material/card';
     PersonFilterPipe,
     MatTableModule,
     MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
     RouterOutlet,
   ],
 })
 export class PersonDashboard implements OnInit {
-  displayedColumns = ['name', 'piiTypes', 'dataSources'];
+  displayedColumns = ['name', 'piiTypes', 'dataSources', 'actions'];
   piiTypesOpts: string[] = [];
 
   constructor(
