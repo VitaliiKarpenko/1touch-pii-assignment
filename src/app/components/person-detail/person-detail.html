@@ -9,10 +9,10 @@
     Back
   </button>
 
-  @if (!person) {
+  @if (!(person$ | async)) {
     <div class="fetching-msg">Person detail is fetching...</div>
   } @else {
-    <div class="person-name">{{ person.name }}</div>
+    <div class="person-name">{{ (person$ | async)!.name }}</div>
 
     <div class="card-container">
       <mat-card appearance="outlined">
@@ -22,7 +22,7 @@
 
         <mat-card-content>
           <app-property-list
-            [properties]="person.pii"
+            [properties]="(person$ | async)!.pii"
             [displayedProperties]="[
               { property: 'address', label: 'Address' },
               { property: 'credit_card', label: 'Credit card' },
@@ -44,7 +44,7 @@
 
         <mat-card-content>
           <app-property-list
-            [properties]="person.dataSources"
+            [properties]="(person$ | async)!.dataSources"
             [displayedProperties]="[
               { property: 'documents', label: 'Documents' },
               { property: 'databases', label: 'Databases' },

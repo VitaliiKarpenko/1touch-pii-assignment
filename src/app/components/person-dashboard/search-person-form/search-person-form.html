@@ -39,7 +39,7 @@
           </span>
         }
       </mat-select-trigger>
-      @for (type of (personService.persons$ | async)! | allPiiTypes; track type) {
+      @for (type of (piiTypesOpts$ | async)!; track type) {
         <mat-option [value]="type">{{ type }}</mat-option>
       }
     </mat-select>

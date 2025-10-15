@@ -12,8 +12,9 @@ export type PersonDataSources = {
   chats: string[];
 };
 
-export type PersonStatistic = {
-  totalPersons: number;
-  totalPiiItems: number;
-  averageDataSources: number;
+export type PersonTableData = {
+  id: number,
+  name: string,
+  piiTypes: string,
+  dataSources: number,
 };

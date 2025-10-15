@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonService } from '../../services/person/person.service';
 import { AsyncPipe } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { PiiTypesPipe } from '../../pipes/pii-types/pii-types.pipe';
-import { DataSourceCountPipe } from '../../pipes/data-source-count/data-source-count.pipe';
-import { PersonFilterPipe } from '../../pipes/person-filter/person-filter.pipe';
 import { SearchPersonForm } from './search-person-form/search-person-form';
 import { PropertyList } from '../../shared/property-list/property-list';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -12,6 +8,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PersonService } from '../../services/person/person.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { PersonStatistic } from '../../models/statistic.model';
+import { selectPersonStatistic } from '../../store/statistic/statistic.selectors';
+import { PersonTableData } from '../../models/person.model';
+import { selectFilteredPersonTableData } from '../../store/persons/persons.selectors';
 
 @Component({
   selector: 'app-person-dashboard',
@@ -22,9 +25,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     SearchPersonForm,
     PropertyList,
     AsyncPipe,
-    PiiTypesPipe,
-    DataSourceCountPipe,
-    PersonFilterPipe,
     MatTableModule,
     MatCardModule,
     MatIconModule,
@@ -35,11 +35,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class PersonDashboard implements OnInit {
   displayedColumns = ['name', 'piiTypes', 'dataSources', 'actions'];
-  piiTypesOpts: string[] = [];
+  filteredPersons$: Observable<PersonTableData[]> = this.store.select(selectFilteredPersonTableData);
+  personStatistic$: Observable<PersonStatistic> = this.store.select(selectPersonStatistic);
 
   constructor(
-    public route: ActivatedRoute,
     public personService: PersonService,
+    private store: Store,
+    public route: ActivatedRoute,
     private router: Router,
   ) {}
 
