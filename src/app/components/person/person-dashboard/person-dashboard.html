@@ -14,6 +14,7 @@
               (click)="getPersons()"
               matTooltip="Refresh data"
               matTooltipPosition="above"
+              id="refresh_data_btn"
             >
               <mat-icon>refresh</mat-icon>
             </button>
@@ -65,13 +66,14 @@
             <ng-container matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef></th>
 
-              <td mat-cell *matCellDef="let person">
+              <td mat-cell *matCellDef="let person; let i = index">
                 <button
                   class="detail-btn"
                   matIconButton
                   (click)="goToDetail(person.id)"
                   matTooltip="View details"
                   matTooltipPosition="left"
+                  [id]="'detail_btn_' + i"
                 >
                   <mat-icon>keyboard_arrow_right</mat-icon>
                 </button>
