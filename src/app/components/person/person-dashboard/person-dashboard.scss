@@ -40,6 +40,17 @@
       margin-right: mat-card.$card-margin;
     }
   }
+
+  mat-card-content {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.refresh-btn {
+  border-radius: 50%;
 }
 
 .mat-mdc-form-field-bottom-align {

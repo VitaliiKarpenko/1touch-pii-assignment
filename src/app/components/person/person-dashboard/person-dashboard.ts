@@ -53,8 +53,7 @@ export class PersonDashboard implements OnInit {
     this.router.navigate([id], { relativeTo: this.route });
   }
 
-  private getPersons() {
-    this.personService.getAllPersons()
-      .subscribe();
+  getPersons() {
+    this.personService.getAllPersons().subscribe();
   }
 }

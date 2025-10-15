@@ -7,6 +7,16 @@
         <mat-card appearance="outlined">
           <mat-card-content>
             <app-search-person-form #searchForm></app-search-person-form>
+
+            <button
+              class="refresh-btn"
+              matMiniFab
+              (click)="getPersons()"
+              matTooltip="Refresh data"
+              matTooltipPosition="above"
+            >
+              <mat-icon>refresh</mat-icon>
+            </button>
           </mat-card-content>
         </mat-card>
 

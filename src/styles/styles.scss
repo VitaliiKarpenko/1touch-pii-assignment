@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 @use './mat-card';
+@use './mat-form-field';
 
 // define plain blue theme
 $blue-theme: mat.define-theme((
