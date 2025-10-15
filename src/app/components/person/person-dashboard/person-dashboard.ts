@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { SearchPersonForm } from './search-person-form/search-person-form';
-import { PropertyList } from '../../shared/property-list/property-list';
+import { SearchPersonForm } from '../search-person-form/search-person-form';
+import { PropertyList } from '../../../shared/property-list/property-list';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { PersonService } from '../../services/person/person.service';
+import { PersonService } from '../services/person.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { PersonStatistic } from '../../models/statistic.model';
-import { selectPersonStatistic } from '../../store/statistic/statistic.selectors';
-import { PersonTableData } from '../../models/person.model';
-import { selectFilteredPersonTableData } from '../../store/persons/persons.selectors';
+import { PersonStatistic } from '../models/statistic.model';
+import { selectPersonStatistic } from '../../../store/statistic/statistic.selectors';
+import { PersonTableData } from '../models/person.model';
+import { selectFilteredPersonTableData } from '../../../store/persons/persons.selectors';
 
 @Component({
   selector: 'app-person-dashboard',

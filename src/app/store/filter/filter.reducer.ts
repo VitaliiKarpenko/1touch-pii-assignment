@@ -1,5 +1,5 @@
 import { createAction, createReducer, on, props } from "@ngrx/store";
-import { PersonFilter } from "../../models/person-filter.model";
+import { PersonFilter } from "../../components/person/models/person-filter.model";
 
 export const updateFilter = createAction(
   '[Filter] Update Filter',

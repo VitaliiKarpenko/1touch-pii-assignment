@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { PropertyList } from '../../shared/property-list/property-list';
+import { PropertyList } from '../../../shared/property-list/property-list';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { PersonService } from '../../services/person/person.service';
+import { PersonService } from '../services/person.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({

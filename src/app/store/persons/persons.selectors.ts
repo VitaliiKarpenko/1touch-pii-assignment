@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { Person, PersonDataSources, PersonTableData } from "../../models/person.model";
+import { Person, PersonDataSources, PersonTableData } from "../../components/person/models/person.model";
 import { selectFilter } from "../filter/filter.selector";
 
 export const selectAllPersons = createFeatureSelector<Person[]>('persons');

@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
-import { Person } from '../../models/person.model';
+import { Person } from '../models/person.model';
 import { Store } from '@ngrx/store';
-import { selectAllPersons } from '../../store/persons/persons.selectors';
-import { updatePersons } from '../../store/persons/persons.reducer';
+import { selectAllPersons } from '../../../store/persons/persons.selectors';
+import { updatePersons } from '../../../store/persons/persons.reducer';
 
 @Injectable()
 export class PersonService {

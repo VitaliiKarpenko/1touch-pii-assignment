@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DisplayedProperty, NormalizedProperty, Properties } from '../../model/property-list.model';
+import { DisplayedProperty, NormalizedProperty, Properties } from '../../models/property-list.model';
 
 @Pipe({
   name: 'normalizeProps'

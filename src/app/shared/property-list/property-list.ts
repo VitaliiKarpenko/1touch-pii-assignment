@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DisplayedProperty, Properties } from './model/property-list.model';
+import { DisplayedProperty, Properties } from './models/property-list.model';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { NormalizePropsPipe } from './pipes/normalize-props/normalize-props.pipe';
 

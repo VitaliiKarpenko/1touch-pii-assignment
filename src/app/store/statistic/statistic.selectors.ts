@@ -1,6 +1,6 @@
 import { createSelector } from "@ngrx/store";
 import { selectAllPersons } from "../persons/persons.selectors";
-import { PersonDataSources } from "../../models/person.model";
+import { PersonDataSources } from "../../components/person/models/person.model";
 
 export const selectPersonStatistic = createSelector(
   selectAllPersons,

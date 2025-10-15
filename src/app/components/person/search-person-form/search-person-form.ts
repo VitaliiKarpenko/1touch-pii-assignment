@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { PersonFilter, PersonFilterName, PersonFilterPiiTypes } from '../../../models/person-filter.model';
+import { PersonFilter, PersonFilterName, PersonFilterPiiTypes } from '../models/person-filter.model';
 import { combineLatest, debounceTime, map, Observable, startWith } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';

@@ -1,5 +1,5 @@
 import { createAction, createReducer, on, props } from "@ngrx/store";
-import { Person } from "../../models/person.model";
+import { Person } from "../../components/person/models/person.model";
 
 export const initialPersonsState: Person[] = [];
 
