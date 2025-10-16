@@ -8,7 +8,7 @@ export const updateFilter = createAction(
 
 export const initialFilterState: PersonFilter = {
   name: null,
-  piiTypes: null,
+  pii: null,
 };
 
 export const filterReducer = createReducer(

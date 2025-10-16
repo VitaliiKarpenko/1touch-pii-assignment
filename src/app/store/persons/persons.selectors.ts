@@ -34,7 +34,7 @@ export const selectFilteredPersonTableData = createSelector(
   selectPersonTableData,
   selectFilter,
   (personTableData, filter): PersonTableData[] => {
-    if (!filter.name && !filter.piiTypes?.length) {
+    if (!filter.name && !filter.pii?.length) {
       return personTableData;
     }
 
@@ -42,8 +42,8 @@ export const selectFilteredPersonTableData = createSelector(
     return personTableData.filter(({ name, piiTypes }) => {
       return name.toLowerCase().includes(normilizedNameFilter) && 
         (
-          !filter.piiTypes?.length ||
-            filter.piiTypes.some((piiTypeFilter) => piiTypes.includes(piiTypeFilter))
+          !filter.pii?.length ||
+            filter.pii.some((piiTypeFilter) => piiTypes.includes(piiTypeFilter))
         );
       }
     );
